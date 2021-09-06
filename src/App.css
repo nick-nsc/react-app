@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -16,10 +17,6 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +32,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Navigation-bar {
+  padding: 15px;
+  text-align: left;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.Navigation-bar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: calc(10px + 1vmin);
+}
+
+.Navigation-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }

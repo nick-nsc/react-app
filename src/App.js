@@ -1,43 +1,28 @@
 import './App.css';
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
-import About from './About';
-import Home from './Home';
-
+import About from './pages/About';
+import Home from './pages/Home';
 
 class App extends React.Component {
   render(){
     return (
       <div className="App">
         <div>
-          <nav>
-            <ul id="navigation">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-            </ul>
+          <nav className="Navigation-bar">
+            <Link to="/">Home</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/about">About</Link>
           </nav>
         </div>
 
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </div>
     );
   }
-    
-  
 }
 
 export default App;
