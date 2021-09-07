@@ -17,6 +17,15 @@ class Home extends React.Component {
                     >
                         Learn React
                     </a>
+                    <br></br>
+                    <a
+                        className="App-link"
+                        href="https://github.com/nick-nsc/react-app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Find the repo header here
+                    </a>
                 </header>
             </div>
         );
