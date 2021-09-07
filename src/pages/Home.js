@@ -24,7 +24,7 @@ class Home extends React.Component {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Find the repo header here
+                        Find the repo here
                     </a>
                 </header>
             </div>
