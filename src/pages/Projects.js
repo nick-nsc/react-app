@@ -5,6 +5,10 @@ import p5 from 'p5';
 class Projects extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            p5instance: '',
+        };
+        this.pauseplay_handleClick = this.pauseplay_handleClick.bind(this);
         this.myRef = React.createRef();
     }
 
@@ -82,6 +86,18 @@ class Projects extends React.Component {
     //after rendering, create the p5 instance and attach it to the given DOM node
     componentDidMount() {
         this.myP5 = new p5(this.Sketch, this.myRef.current);
+        this.setState({p5instance: this.myP5});
+    }
+
+    pauseplay_handleClick() {
+        if (this.state.p5instance._loop) {
+            this.state.p5instance.noLoop();
+        } else {
+            this.state.p5instance.loop();
+        }
+        //apply changes to the p5instance state with setState(), so the component will update e.g. the button
+        let newInstance = this.state.p5instance;
+        this.setState({p5instance: newInstance});
     }
 
     render() {
@@ -90,12 +106,16 @@ class Projects extends React.Component {
                 <div>
                     <h1>Example p5.js sketch</h1>
                 </div>
-                <div ref={this.myRef} style={{ 'margin-top': '50px' }}>
+                <div ref={this.myRef} style={{ 'marginTop': '50px' }}>
 
                 </div>
                 <div>
                     Credits: Created by <a href='http://lukedubois.com/' target='_blank' rel='noreferrer'>R. Luke DuBois</a>.
                 </div>
+                <br />
+                <button name="pauseplay" onClick={this.pauseplay_handleClick}>
+                    {this.state.p5instance._loop === true ? 'Pause' : 'Play'}
+                </button>
             </div>
             
         );
