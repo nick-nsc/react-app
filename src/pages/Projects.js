@@ -9,6 +9,7 @@ class Projects extends React.Component {
             p5instance: '',
         };
         this.pauseplay_handleClick = this.pauseplay_handleClick.bind(this);
+        this.reset_handleClick = this.reset_handleClick.bind(this);
         this.myRef = React.createRef();
     }
 
@@ -60,23 +61,23 @@ class Projects extends React.Component {
             p.translate(p.width / 2, p.height / 2); // move to middle of screen
         
             for (let i = 0; i < sines.length; i++) {
-            let erad = 0; // radius for small "point" within circle... this is the 'pen' when tracing
-            // setup for tracing
-            if (trace) {
-                p.stroke(0, 0, 255 * (p.float(i) / sines.length), alpha); // blue
-                p.fill(0, 0, 255, alpha / 2); // also, um, blue
-                erad = 5.0 * (1.0 - p.float(i) / sines.length); // pen width will be related to which sine
-            }
-            let radius = rad / (i + 1); // radius for circle itself
-            p.rotate(sines[i]); // rotate circle
-            if (!trace) p.ellipse(0, 0, radius * 2, radius * 2); // if we're simulating, draw the sine
-            p.push(); // go up one level
-            p.translate(0, radius); // move to sine edge
-            if (!trace) p.ellipse(0, 0, 5, 5); // draw a little circle
-            if (trace) p.ellipse(0, 0, erad, erad); // draw with erad if tracing
-            p.pop(); // go down one level
-            p.translate(0, radius); // move into position for next sine
-            sines[i] = (sines[i] + (fund + (fund * i * ratio))) % p.TWO_PI; // update angle based on fundamental
+                let erad = 0; // radius for small "point" within circle... this is the 'pen' when tracing
+                // setup for tracing
+                if (trace) {
+                    p.stroke(0, 0, 255 * (p.float(i) / sines.length), alpha); // blue
+                    p.fill(0, 0, 255, alpha / 2); // also, um, blue
+                    erad = 5.0 * (1.0 - p.float(i) / sines.length); // pen width will be related to which sine
+                }
+                let radius = rad / (i + 1); // radius for circle itself
+                p.rotate(sines[i]); // rotate circle
+                if (!trace) p.ellipse(0, 0, radius * 2, radius * 2); // if we're simulating, draw the sine
+                p.push(); // go up one level
+                p.translate(0, radius); // move to sine edge
+                if (!trace) p.ellipse(0, 0, 5, 5); // draw a little circle
+                if (trace) p.ellipse(0, 0, erad, erad); // draw with erad if tracing
+                p.pop(); // go down one level
+                p.translate(0, radius); // move into position for next sine
+                sines[i] = (sines[i] + (fund + (fund * i * ratio))) % p.TWO_PI; // update angle based on fundamental
             }
         
             p.pop(); // pop down final transformation
@@ -90,6 +91,7 @@ class Projects extends React.Component {
     }
 
     pauseplay_handleClick() {
+        //do not redraw/rerender: instead call noloop/loop() on the active instance
         if (this.state.p5instance._loop) {
             this.state.p5instance.noLoop();
         } else {
@@ -98,6 +100,13 @@ class Projects extends React.Component {
         //apply changes to the p5instance state with setState(), so the component will update e.g. the button
         let newInstance = this.state.p5instance;
         this.setState({p5instance: newInstance});
+    }
+
+    reset_handleClick() {
+        //remove the sketch canvas, create a new instance and bind it to the referenced <dir>
+        this.state.p5instance.remove();
+        this.myP5 = new p5(this.Sketch, this.myRef.current);
+        this.setState({p5instance: this.myP5});
     }
 
     render() {
@@ -115,6 +124,9 @@ class Projects extends React.Component {
                 <br />
                 <button name="pauseplay" onClick={this.pauseplay_handleClick}>
                     {this.state.p5instance._loop === true ? 'Pause' : 'Play'}
+                </button>
+                <button name="reset" onClick={this.reset_handleClick}>
+                    Reset
                 </button>
             </div>
             
