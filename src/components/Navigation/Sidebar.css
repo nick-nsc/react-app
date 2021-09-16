@@ -1,0 +1,11 @@
+.Sidebar {
+    width: 10%;
+    height: 100%;
+    position: fixed;
+    text-align: left;
+    border-right: 1px solid black;
+}
+
+.Sidebar li {
+    padding: 5px;
+}
