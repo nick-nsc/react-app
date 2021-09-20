@@ -3,20 +3,25 @@ import './Sidebar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({description, ...other}) => {
-
+const Sidebar = ({description, linkList, ...other}) => {
+    //evaluate the given linkList, return a <ul> for each topic with their links
     return(
         <div className="Sidebar">
             <h2>{description}</h2>
-            <ul>
-                <li>p5.js</li>
+            {linkList.map((item) => {
+                return (
                     <ul>
-                        <li><Link to="/projects/spirograph">Spirograph</Link></li>
-                        <li><Link to="/projects/bezier_animation">Animated Bezier curve</Link></li>
+                        <li>{item['topic']}</li>
+                            <ul>
+                                {item['links'].map((link) => {
+                                    return(
+                                        <li><Link to={link['link']}>{link['description']}</Link></li>
+                                    )                                        
+                                })}
+                            </ul>    
                     </ul>
-                <li>Vega.js</li>
-                <li>Other</li>
-            </ul>
+                )
+            })}
         </div>
     )
 }
