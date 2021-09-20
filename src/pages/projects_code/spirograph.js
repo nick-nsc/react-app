@@ -29,7 +29,7 @@ const SketchCode = (p) => {
         p.createCanvas(710, 400);
 
         rad = p.height / 4; // compute radius for central circle
-        p.background(204); // clear the screen
+        p.background(200); // clear the screen
 
         for (let i = 0; i<sines.length; i++) {
             sines[i] = p.PI; // start EVERYBODY facing NORTH
@@ -39,7 +39,7 @@ const SketchCode = (p) => {
     //drawing stuff
     p.draw = () => {
         if (!trace) {
-            p.background(204); // clear screen if showing geometry
+            p.background(200); // clear screen if showing geometry
             p.stroke(0, 255); // black pen
             p.noFill(); // don't fill
         }
@@ -72,7 +72,7 @@ const SketchCode = (p) => {
     }
 }
 
-class Sketch extends React.Component {
+class Spirograph extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -112,7 +112,7 @@ class Sketch extends React.Component {
         return(
             <main style={{ 'marginLeft': '10%' }}>
                 <div>
-                    <h1>Example p5.js sketch</h1>
+                    <h1>Spirograph</h1>
                 </div>
                 <div ref={this.myRef}>
 
@@ -132,4 +132,4 @@ class Sketch extends React.Component {
     }
 }
 
-export default Sketch;
+export default Spirograph;

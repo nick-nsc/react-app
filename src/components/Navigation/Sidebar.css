@@ -1,7 +1,7 @@
 .Sidebar {
     width: 10%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     text-align: left;
     border-right: 1px solid black;
 }
