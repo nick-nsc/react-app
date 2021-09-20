@@ -5,7 +5,7 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 
-class App extends React.Component {
+export default class App extends React.Component {
   render(){
     return (
       <div className="App">
@@ -26,5 +26,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

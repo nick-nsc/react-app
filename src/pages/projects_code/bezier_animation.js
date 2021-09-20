@@ -118,7 +118,7 @@ const SketchCode = (p) => {
     }
 }
 
-class BezierAnimation extends React.Component {
+export default class BezierAnimation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -156,7 +156,7 @@ class BezierAnimation extends React.Component {
 
     render() {
         return(
-            <main style={{ 'marginLeft': '10%' }}>
+            <main style={{ 'marginLeft': '15%' }}>
                 <div>
                     <h1>Animated Bezier curve</h1>
                 </div>
@@ -177,5 +177,3 @@ class BezierAnimation extends React.Component {
         )
     }
 }
-
-export default BezierAnimation;

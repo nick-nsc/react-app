@@ -72,7 +72,7 @@ const SketchCode = (p) => {
     }
 }
 
-class Spirograph extends React.Component {
+export default class Spirograph extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -110,7 +110,7 @@ class Spirograph extends React.Component {
 
     render() {
         return(
-            <main style={{ 'marginLeft': '10%' }}>
+            <main style={{ 'marginLeft': '15%' }}>
                 <div>
                     <h1>Spirograph</h1>
                 </div>
@@ -131,5 +131,3 @@ class Spirograph extends React.Component {
         )
     }
 }
-
-export default Spirograph;

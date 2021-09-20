@@ -5,7 +5,7 @@ import Sidebar from '../components/Navigation/Sidebar.js';
 import Spirograph from './projects_code/spirograph.js';
 import BezierAnimation from './projects_code/bezier_animation.js';
 
-class Projects extends React.Component {
+export default class Projects extends React.Component {
     render() {
         return (
             <div name="projects-frame">
@@ -23,6 +23,4 @@ class Projects extends React.Component {
             </div>
         );
     }
-}     
-
-export default Projects;
+}
