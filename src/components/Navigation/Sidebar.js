@@ -8,14 +8,14 @@ const Sidebar = ({description, linkList, ...other}) => {
     return(
         <div className="Sidebar">
             <h2>{description}</h2>
-            {linkList.map((item) => {
+            {linkList.map((item, iteration_outer) => {
                 return (
-                    <ul>
+                    <ul key={iteration_outer}>
                         <li>{item['topic']}</li>
                             <ul>
-                                {item['links'].map((link) => {
+                                {item['links'].map((link, iteration_inner) => {
                                     return(
-                                        <li><Link to={link['link']}>{link['description']}</Link></li>
+                                        <li key={iteration_inner}><Link to={link['link']}>{link['description']}</Link></li>
                                     )                                        
                                 })}
                             </ul>    
